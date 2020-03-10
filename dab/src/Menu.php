@@ -13,12 +13,12 @@ class Menu
     public function afficherPour(PorteurCarte $utilisateur): string
     {
         $options  = [
-            'retrait' => "Retirer de l'argent"
+            Action::RETRAIT => "Retirer de l'argent"
         ];
 
         if ($utilisateur instanceof Client) {
-            $options['depot'] = "Déposer de l'argent";
-            $options['consultation'] = "Consulter la balance du compte";
+            $options[Action::DEPOT] = "Déposer de l'argent";
+            $options[Action::CONSULTATION] = "Consulter la balance du compte";
         }
 
         $input    = $this->climate->br()->radio('Que souhaitez vous faire :', $options);

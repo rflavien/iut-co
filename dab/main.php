@@ -1,11 +1,13 @@
 <?php
 
-require_once __DIR__ . '/src/PorteurCarte.php';
-require_once __DIR__ . '/src/Compte.php';
-require_once __DIR__ . '/src/Client.php';
-require_once __DIR__ . '/src/LecteurCarte.php';
-require_once __DIR__ . '/src/CompteRepository.php';
+require_once __DIR__ . '/src/Domain/PorteurCarte.php';
+require_once __DIR__ . '/src/Domain/Compte.php';
+require_once __DIR__ . '/src/Domain/Client.php';
+require_once __DIR__ . '/src/Domain/LecteurCarte.php';
+require_once __DIR__ . '/src/Domain/CompteRepository.php';
+require_once __DIR__ . '/src/Action.php';
 require_once __DIR__ . '/src/Menu.php';
+require_once __DIR__ . '/src/Router.php';
 require_once('vendor/autoload.php');
 
 $climate = new League\CLImate\CLImate;
@@ -27,14 +29,4 @@ $climate->br()->out("Bonjour " . $utilisateur->getNom());
 $gestionnaireDeMenu = new Menu($climate);
 $choix = $gestionnaireDeMenu->afficherPour($utilisateur);
 
-switch ($choix) {
-    case 'depot':
-        // @todo call dépot
-        break;
-    case 'consultation':
-        // @todo call consultation
-        break;
-    case 'retrait':
-        // @todo call retrait
-        break;
-}
+(new Router())->callAction($choix);
