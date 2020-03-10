@@ -25,4 +25,16 @@ $climate->br()->out("Bonjour " . $utilisateur->getNom());
 
 // 2. proposer les actions possibles
 $gestionnaireDeMenu = new Menu($climate);
-$gestionnaireDeMenu->afficherPour($utilisateur);
+$choix = $gestionnaireDeMenu->afficherPour($utilisateur);
+
+switch ($choix) {
+    case 'depot':
+        // @todo call dépot
+        break;
+    case 'consultation':
+        // @todo call consultation
+        break;
+    case 'retrait':
+        // @todo call retrait
+        break;
+}

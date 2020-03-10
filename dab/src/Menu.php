@@ -10,7 +10,7 @@ class Menu
         $this->climate = $climate;
     }
 
-    public function afficherPour(PorteurCarte $utilisateur)
+    public function afficherPour(PorteurCarte $utilisateur): string
     {
         $options  = [
             'retrait' => "Retirer de l'argent"
@@ -24,6 +24,6 @@ class Menu
         $input    = $this->climate->br()->radio('Que souhaitez vous faire :', $options);
         $response = $input->prompt();
 
-        var_dump($response);
+        return $response;
     }
 }
