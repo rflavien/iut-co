@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/src/PorteurCarte.php';
 require_once __DIR__ . '/src/Compte.php';
+require_once __DIR__ . '/src/Client.php';
 require_once __DIR__ . '/src/LecteurCarte.php';
 require_once __DIR__ . '/src/CompteRepository.php';
 require_once('vendor/autoload.php');
