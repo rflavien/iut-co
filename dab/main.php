@@ -5,6 +5,7 @@ require_once __DIR__ . '/src/Compte.php';
 require_once __DIR__ . '/src/Client.php';
 require_once __DIR__ . '/src/LecteurCarte.php';
 require_once __DIR__ . '/src/CompteRepository.php';
+require_once __DIR__ . '/src/Menu.php';
 require_once('vendor/autoload.php');
 
 $climate = new League\CLImate\CLImate;
@@ -23,15 +24,5 @@ $climate->br()->out("Bonjour " . $utilisateur->getNom());
 // 1.1 est-ce que le PIN est ok ?
 
 // 2. proposer les actions possibles
-$options  = [
-    'retrait' => "Retirer de l'argent"
-];
-
-if ($utilisateur instanceof Client) {
-    $options['depot'] = "Déposer de l'argent";
-    $options['consultation'] = "Consulter la balance du compte";
-}
-
-$input    = $climate->br()->radio('Que souhaitez vous faire :', $options);
-$response = $input->prompt();
-var_dump($response);
+$gestionnaireDeMenu = new Menu($climate);
+$gestionnaireDeMenu->afficherPour($utilisateur);
